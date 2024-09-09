@@ -93,12 +93,12 @@ The simplicity and flexibility of KeyVault make it an ideal stepping stone, allo
 
 1. Build the Docker image:
    ```
-   docker build -t keyvault-server .
+   docker build -t keyvault .
    ```
 
 2. Run the Docker container, mapping your local `.secrets` directory:
    ```
-   docker run -d -p 38680:38680 -v $(pwd)/.secrets:/app/.secrets:ro --name keyvault-server keyvault-server
+   docker run -d -p 38680:38680 -v $(pwd)/.secrets:/app/.secrets:ro --name keyvault --hostname keyvault keyvault
    ```
 
 The server will be available at `http://localhost:38680`.
@@ -144,13 +144,11 @@ Here's a basic example of how you might set up KeyVault in a Docker network with
 ```yaml
 version: '3.8'
 
-networks:
-  dev-network:
-    driver: bridge
-
 services:
   keyvault:
     build: .
+    container_name: keyvault
+    hostname: keyvault
     networks:
       - dev-network
     environment:
@@ -167,6 +165,11 @@ services:
       - KEYVAULT_PORT=38680
     depends_on:
       - keyvault
+
+networks:
+  dev-network:
+    external: true
+    name: internalnet
 ```
 
 In this setup:
