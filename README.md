@@ -36,7 +36,7 @@ The simplicity and flexibility of KeyVault make it an ideal stepping stone, allo
 
 1. Clone the repository and navigate to the project directory:
    ```
-   git clone https://github.com/yourusername/keyvault.git
+   git clone https://github.com/ltoscano/keyvault.git
    cd keyvault
    ```
 
