@@ -4,7 +4,7 @@ services:
   keyvault:
     build: .
     container_name: keyvault
-    host: keyvault
+    hostname: keyvault
     ports:
       - "${KEYVAULT_PORT:-38680}:38680"
     volumes:
