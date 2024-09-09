@@ -89,6 +89,8 @@ The simplicity and flexibility of KeyVault make it an ideal stepping stone, allo
    python test_client.py
    ```
 
+7. From this point on, any key you add, modify, or remove in the .secrets/config.json file will be immediately recognized by the KeyVault server. In any application you create, you just need to interface with KeyVault to read the key you need. Enjoy the simplicity and flexibility! Sometimes it takes little to live happily.
+
 ### Using Docker
 
 1. Build the Docker image:
