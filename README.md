@@ -177,6 +177,34 @@ In this setup:
 - `your-app` can access KeyVault at `http://keyvault:38680` within the `dev-network`.
 - KeyVault is not accessible from outside the `dev-network`, providing an additional layer of security.
 
+Additional network configuration notes:
+
+1. `internalnet`:
+   - This is a custom network name. It represents a pre-existing Docker network that you've created separately.
+   - The purpose of using a custom network like `internalnet` is to create a isolated network environment for your containers, enhancing security and organization of your Docker services.
+
+2. `external: true`:
+   - This configuration tells Docker Compose that the network is not managed by this specific Docker Compose file.
+   - It indicates that the `internalnet` network already exists and should be used as-is, rather than being created by this Docker Compose configuration.
+
+3. Configuring `internalnet`:
+   - To create the `internalnet` network before running this Docker Compose file, you would use the following command:
+     ```
+     docker network create internalnet
+     ```
+   - This creates a bridge network named `internalnet` that can be used across multiple Docker Compose projects or individual containers.
+
+4. Benefits of this setup:
+   - Isolation: Services on this network are isolated from other Docker networks and the host network.
+   - Reusability: The same network can be used across multiple projects, allowing inter-project communication if needed.
+   - Security: By not exposing ports to the host, you reduce the attack surface of your applications.
+
+5. Connecting to `internalnet` from other projects:
+   - Other Docker Compose projects or individual containers can connect to this network by specifying `external: true` and the correct network name.
+   - This allows for a modular approach to your Docker-based development environment, where different components can be developed and run independently but still communicate when needed.
+
+Remember to create the `internalnet` network before running this Docker Compose configuration. This approach provides flexibility in managing your Docker networking across multiple projects or services.
+
 Remember, the security of your development environment and the keys stored in KeyVault is your responsibility. Always follow best practices for securing sensitive information.
 
 ## Contributing
