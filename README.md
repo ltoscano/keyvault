@@ -31,7 +31,7 @@ Key features and benefits include:
 You can install KeyVault using pip:
 
 ```bash
-pip install keyvault
+pip install keyvault-llm
 ```
 
 Or directly from the GitHub repository:
@@ -56,7 +56,7 @@ pip install git+https://github.com/ltoscano/keyvault.git
 2. Start the KeyVault server:
 
    ```bash
-   python -m keyvault.server --config /path/to/config.json
+   python -m keyvault_llm.server --config /path/to/config.json
    ```
 
    By default, the server will run on `http://localhost:38680`. You can change the host and port using the `--host` and `--port` options.
@@ -64,7 +64,7 @@ pip install git+https://github.com/ltoscano/keyvault.git
 3. Use the client to interact with the server:
 
    ```python
-   from keyvault.client import KeyVaultClient
+   from keyvault_llm.client import KeyVaultClient
    import logging
 
    logging.basicConfig(level=logging.INFO)
@@ -94,7 +94,7 @@ KeyVault can be configured using command-line arguments when starting the server
 Example:
 
 ```bash
-python -m keyvault.server --config /path/to/config.json --host 127.0.0.1 --port 8080
+python -m keyvault_llm.server --config /path/to/config.json --host 127.0.0.1 --port 8080
 ```
 
 ## Security Considerations

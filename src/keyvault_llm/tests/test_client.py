@@ -1,6 +1,6 @@
 import unittest
 from unittest.mock import patch
-from keyvault.client import KeyVaultClient
+from keyvault_llm.client import KeyVaultClient
 
 class TestKeyVaultClient(unittest.TestCase):
 

@@ -1,0 +1,2 @@
+[console_scripts]
+keyvault = keyvault_llm.server:main
